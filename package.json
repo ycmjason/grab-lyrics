@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --recursive"
+    "test": "nyc mocha --recursive",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "cheerio": "^1.0.0-rc.2"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "mocha": "^5.0.0",
     "nyc": "^11.4.1"
   }
