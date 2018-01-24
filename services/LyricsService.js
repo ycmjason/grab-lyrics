@@ -1,10 +1,9 @@
-const axios = require('axios');
+const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 class LyricsService {
   fetch(url) {
-    return axios.get(url)
-      .then(res => res.data)
+    return fetch(url).then(res => res.text())
       .then(html => cheerio.load(html))
       .then(this.parse.bind(this));
   }

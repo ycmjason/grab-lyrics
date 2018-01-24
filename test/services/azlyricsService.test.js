@@ -1,5 +1,5 @@
 const assert = require('assert');
-const axios = require('axios');
+const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 const azlyricsService = require('../../services/azlyricsService');
@@ -8,8 +8,19 @@ describe('azlyricsService', function() {
   let $;
 
   before(function(done) {
-    axios.get('https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html')
-      .then(res => res.data)
+    const options = {
+      method: 'GET',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Host': 'www.azlyrics.com',
+        'Pragma': 'no-cache',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+      },
+    };
+    fetch('https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html', options)
+      .then(res => res.text())
       .then(html => $ = cheerio.load(html))
       .then(() => done())
       .catch(done);
