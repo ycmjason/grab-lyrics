@@ -5,6 +5,8 @@ const cheerio = require('cheerio');
 const azlyricsService = require('../../services/azlyricsService');
 
 describe('azlyricsService', function() {
+  // travis CI do not always pass this test for some reason
+  this.retries(5);
   let $;
 
   before(function(done) {
