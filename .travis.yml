@@ -1,5 +1,9 @@
+notifications:
+  email: false
+
 sudo: false
 dist: "trusty"
+
 language: node_js
 node_js:
   - "node"
