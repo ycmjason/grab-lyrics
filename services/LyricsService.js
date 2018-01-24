@@ -12,11 +12,11 @@ class LyricsService {
   parse($) {
     const title = this.parseTitle($);
     const lyrics = this.parseLyrics($);
-    const writter = this.parseWritter($);
-    return { title, writter,lyrics };
+    const artist = this.parseArtist($);
+    return { title, artist, lyrics };
   };
 
-  parseWritter($) {
+  parseArtist($) {
     throw "this method should be overwritten!";
   }
 

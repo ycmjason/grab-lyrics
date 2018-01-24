@@ -2,15 +2,15 @@ const LyricsService = require('./LyricsService');
 
 class AzlyricsService extends LyricsService{
   parseTitle($) {
-    return $('.ringtone').next().text();
+    return $('.ringtone').next('b').text().match(/"(.*?)"/)[1];
   }
 
-  parseWritter($) {
-    return 'writter';
+  parseArtist($) {
+    return $('title').text().match(/(.*?) Lyrics/)[1];
   }
   
   parseLyrics($) {
-    return 'hello';
+    return $('.ringtone').nextAll('div').eq(0).text().trim();
   }
 }
 
