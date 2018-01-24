@@ -4,14 +4,13 @@ const cheerio = require('cheerio');
 class LyricsService {
   fetch(url) {
     return fetch(url).then(res => res.text())
-      .then(html => cheerio.load(html))
       .then(this.parse.bind(this));
   }
 
-  parse($) {
-    const title = this.parseTitle($);
-    const lyrics = this.parseLyrics($);
-    const artist = this.parseArtist($);
+  parse(html) {
+    const title = this.parseTitle(cheerio.load($));
+    const lyrics = this.parseLyrics(cheerio.load($));
+    const artist = this.parseArtist(cheerio.load($));
     return { title, artist, lyrics };
   };
 
