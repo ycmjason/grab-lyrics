@@ -11,7 +11,8 @@ describe('azlyricsService', function() {
     axios.get('https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html')
       .then(res => res.data)
       .then(html => $ = cheerio.load(html))
-      .then(() => done());
+      .then(() => done())
+      .catch(done);
   });
 
   it('#parseTitle()', function() {
