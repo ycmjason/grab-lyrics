@@ -1,7 +1,7 @@
 notifications:
   email: false
 
-sudo: false
+sudo: required
 dist: "trusty"
 
 language: node_js
