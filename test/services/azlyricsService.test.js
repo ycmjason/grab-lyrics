@@ -11,12 +11,7 @@ describe('azlyricsService', function() {
     const options = {
       method: 'GET',
       headers: {
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-        'Host': 'www.azlyrics.com',
-        'Pragma': 'no-cache',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
       },
     };
     fetch('https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html', options)
