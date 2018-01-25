@@ -2,7 +2,7 @@ const assert = require('assert');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const service = require('../../services/metrolyricsService');
+const service = require('../../lib/services/metrolyricsService');
 
 describe('metrolyricsService', function() {
   let $;

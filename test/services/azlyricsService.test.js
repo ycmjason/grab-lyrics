@@ -2,7 +2,7 @@ const assert = require('assert');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const azlyricsService = require('../../services/azlyricsService');
+const azlyricsService = require('../../lib/services/azlyricsService');
 
 describe('azlyricsService', function() {
   // travis CI do not always pass this test for some reason

@@ -12,6 +12,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "codecov": "^3.0.0",
+    "html-to-text": "^3.3.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
