@@ -7,7 +7,7 @@ const service = require('../../services/metrolyricsService');
 describe('metrolyricsService', function() {
   let $;
 
-  before(function(done) {
+  beforeEach(function(done) {
     const options = {
       method: 'GET',
       headers: {

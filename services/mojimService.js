@@ -10,7 +10,7 @@ class MojimService extends LyricsService{
   }
   
   parseLyrics($) {
-    const lines = $.load($('.fsZx3').html().replace(/<br>/g, '\n')).text().split('\n');
+    const lines = $.load($('#fsZx3').html().replace(/<br>/g, '\n')).text().split('\n');
     let cut = true;
     return lines.filter(l => !/.*?Mojim.com.*/.test(l))
       .filter(l => cut = cut && !/^\[[0-9:.]+\]/.test(l))

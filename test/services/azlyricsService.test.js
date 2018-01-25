@@ -9,7 +9,7 @@ describe('azlyricsService', function() {
   this.retries(5);
   let $;
 
-  before(function(done) {
+  beforeEach(function(done) {
     const options = {
       method: 'GET',
       headers: {

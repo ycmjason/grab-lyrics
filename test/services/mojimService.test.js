@@ -8,7 +8,7 @@ describe('metrolyricsService', function() {
   describe('方大同 - 黑洞裡', function() {
     let $;
 
-    before(function(done) {
+    beforeEach(function(done) {
       const options = {
         method: 'GET',
         headers: {
@@ -65,7 +65,7 @@ describe('metrolyricsService', function() {
   describe('張惠妹 - 身後', function() {
     let $;
 
-    before(function(done) {
+    beforeEach(function(done) {
       const options = {
         method: 'GET',
         headers: {
