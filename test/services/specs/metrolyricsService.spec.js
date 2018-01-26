@@ -1,36 +1,10 @@
-const assert = require('assert');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
-
-const service = require('../../lib/services/metrolyricsService');
-
-describe('metrolyricsService', function() {
-  let $;
-
-  beforeEach(function(done) {
-    const options = {
-      method: 'GET',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
-      },
-    };
-    fetch('http://www.metrolyrics.com/stop-this-train-lyrics-john-mayer.html', options)
-      .then(res => res.text())
-      .then(html => $ = cheerio.load(html))
-      .then(() => done())
-      .catch(done);
-  });
-
-  it('#parseTitle()', function() {
-    assert.equal(service.parseTitle($), 'Stop This Train');
-  });
-
-  it('#parseArtist()', function() {
-    assert.equal(service.parseArtist($), 'John Mayer');
-  });
-
-  it('#parseLyrics()', function() {
-    const lyrics = `No I'm not colorblind
+module.exports = [
+  {
+    url: 'http://www.metrolyrics.com/stop-this-train-lyrics-john-mayer.html',
+    expect: {
+      title: 'Stop This Train',
+      artist: 'John Mayer',
+      lyrics: `No I'm not colorblind
 I know the world is black and white
 Try to keep an open mind but
 I just can't sleep on this tonight
@@ -94,7 +68,7 @@ I can't take the speed
 its movin in
 I know I can't
 Cause now I see
-I'll never stop this train."`;
-    assert.equal(service.parseLyrics($), lyrics);
-  });
-});
+I'll never stop this train."`,
+    },
+  }
+];

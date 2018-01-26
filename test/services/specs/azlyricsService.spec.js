@@ -1,38 +1,10 @@
-const assert = require('assert');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
-
-const azlyricsService = require('../../lib/services/azlyricsService');
-
-describe('azlyricsService', function() {
-  // travis CI do not always pass this test for some reason
-  this.retries(5);
-  let $;
-
-  beforeEach(function(done) {
-    const options = {
-      method: 'GET',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
-      },
-    };
-    fetch('https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html', options)
-      .then(res => res.text())
-      .then(html => $ = cheerio.load(html))
-      .then(() => done())
-      .catch(done);
-  });
-
-  it('#parseTitle()', function() {
-    assert.equal(azlyricsService.parseTitle($), 'Stop This Train');
-  });
-
-  it('#parseArtist()', function() {
-    assert.equal(azlyricsService.parseArtist($), 'John Mayer');
-  });
-
-  it('#parseLyrics()', function() {
-    const lyrics = `No, I'm not color blind
+module.exports = [
+    {
+      url: 'https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html',
+      expect: {
+        title: 'Stop This Train',
+        artist: 'John Mayer',
+        lyrics: `No, I'm not color blind
 I know the world is black and white
 Try to keep an open mind
 but I just can't sleep on this tonight
@@ -80,7 +52,7 @@ I can't take this speed it's moving in
 I know I can't
 'Cause now I see I'll never stop this train."
 
-(think I got 'em now)`;
-    assert.equal(azlyricsService.parseLyrics($), lyrics);
-  });
-});
+(think I got 'em now)`,
+      },
+    },
+  ]
