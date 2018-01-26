@@ -13,6 +13,7 @@ const fetch_retry = (url, options = {}, n = 5) => {
   return new Promise((res, rej) => {
     fetch(url, options).then(res).catch((err) => {
       if(n === 1) return rej(err);
+      console.log('fetch failed, retrying...');
       return res(fetch_retry(url, options, n - 1));
     });
   });
