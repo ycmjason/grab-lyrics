@@ -1,34 +1,37 @@
 const assert = require('assert');
 
 const sinon = require('sinon');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const stub_fetch = require('../helpers/stub_fetch');
+const stub_cheerio = require('../helpers/stub_cheerio');
 
-const freshRequire = (path) => {
-  delete require.cache[require.resolve(path)]
-  return require(path);
-};
+const proxyquire = require('proxyquire');
 
-const freshLyricsService = () => new (freshRequire('../../lib/services/LyricsService'))();
+
+const LyricsServicePath = '../../lib/services/LyricsService';
 
 describe('LyricsService', function() {
+  beforeEach(function() {
+    const html = `<b>hihi hello world</b>`;
+    const fakeLibs = {
+      'node-fetch': stub_fetch.ok(html),
+      'cheerio': stub_cheerio(),
+    };
+    const LyricsService = proxyquire(LyricsServicePath, fakeLibs);
+
+    Object.assign(this, { html, fakeLibs, LyricsService });
+  });
+
   describe('fetch()', function() {
     it('# should call fetch', function(done) {
+      const { LyricsService, fakeLibs, html } = this;
       const url = 'some_url.com';
-      const res = {
-        text: sinon.stub()
-      };
+      sinon.stub(LyricsService.prototype, 'parse');
 
-      sinon.stub(fetch, 'default')                  
-      fetch.default.returns(Promise.resolve(res));
-      const lyricsService = freshLyricsService();
-      sinon.stub(lyricsService, 'parse');
+      const lyricsService = new LyricsService();
 
       lyricsService.fetch(url).then(() => {
-        assert(fetch.default.calledWith(url));
-        assert(res.text.called);
-        assert(lyricsService.parse.called);
-        fetch.default.restore();
+        assert(fakeLibs['node-fetch'].calledWith(url));
+        assert(lyricsService.parse.calledWith(html));
       }).then(done);
 
     });
@@ -36,43 +39,44 @@ describe('LyricsService', function() {
 
   describe('parse()', function() {
     it('# should call parseTitle/Lyrics/Artist()', function() {
-      const html = 'hello worllllld';
-      const $ = 'hi';
+      const { LyricsService, fakeLibs, html } = this;
+      const LOAD_RETURNS = 'yoyoyo amazing!';
+      fakeLibs.cheerio.load.returns(LOAD_RETURNS);
 
-      sinon.stub(cheerio, 'load');
-      cheerio.load.returns($);
+      sinon.stub(LyricsService.prototype, 'parseTitle');
+      sinon.stub(LyricsService.prototype, 'parseArtist');
+      sinon.stub(LyricsService.prototype, 'parseLyrics');
 
-      const lyricsService = freshLyricsService();
-      sinon.stub(lyricsService, 'parseTitle');
-      sinon.stub(lyricsService, 'parseArtist');
-      sinon.stub(lyricsService, 'parseLyrics');
+      const lyricsService = new LyricsService();
 
       lyricsService.parse(html);
-      assert(cheerio.load.calledWith(html));
-      assert.equal(cheerio.load.callCount, 3);
-      assert(lyricsService.parseTitle.calledWith($));
-      assert(lyricsService.parseArtist.calledWith($));
-      assert(lyricsService.parseLyrics.calledWith($));
 
-      cheerio.load.restore();
+      assert(fakeLibs.cheerio.load.calledWith(html));
+      assert.equal(fakeLibs.cheerio.load.callCount, 3);
+      assert(lyricsService.parseTitle.calledWith(LOAD_RETURNS));
+      assert(lyricsService.parseArtist.calledWith(LOAD_RETURNS));
+      assert(lyricsService.parseLyrics.calledWith(LOAD_RETURNS));
     });
   });
 
   describe('parseArtist()', function() {
     it('# should throw', function() {
-      assert.throws(() => freshLyricsService().parseArtist(), /overwritten/);
+      const { LyricsService } = this;
+      assert.throws(() => new LyricsService().parseArtist(), /overwritten/);
     });
   });
 
   describe('parseTitle()', function() {
     it('# should throw', function() {
-      assert.throws(() => freshLyricsService().parseTitle(), /overwritten/);
+      const { LyricsService } = this;
+      assert.throws(() => new LyricsService().parseTitle(), /overwritten/);
     });
   });
 
   describe('parseLyrics()', function() {
     it('# should throw', function() {
-      assert.throws(() => freshLyricsService().parseLyrics(), /overwritten/);
+      const { LyricsService } = this;
+      assert.throws(() => new LyricsService().parseLyrics(), /overwritten/);
     });
   });
 });
