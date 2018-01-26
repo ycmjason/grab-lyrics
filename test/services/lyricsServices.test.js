@@ -13,25 +13,25 @@ const makeTest = (serviceName, { url, expect }) => {
     before(function(done) {
       fetch_retry(url)
         .then(res => res.text())
-        .then(html => this.$ = cheerio.load(html))
+        .then(html => this.html = html)
         .then(() => done())
         .catch(done);
       this.lyricsService = require('../../lib/services/' + serviceName);
     });
 
     it('#parseTitle()', function() {
-      const { $ } = this;
-      assert.equal(this.lyricsService.parseTitle($), expect.title);
+      const { html } = this;
+      assert.equal(this.lyricsService.parseTitle(cheerio.load(html)), expect.title);
     });
 
     it('#parseArtist()', function() {
-      const { $ } = this;
-      assert.equal(this.lyricsService.parseArtist($), expect.artist);
+      const { html } = this;
+      assert.equal(this.lyricsService.parseArtist(cheerio.load(html)), expect.artist);
     });
 
     it('#parseLyrics()', function() {
-      const { $ } = this;
-      assert.equal(this.lyricsService.parseLyrics($), expect.lyrics);
+      const { html } = this;
+      assert.equal(this.lyricsService.parseLyrics(cheerio.load(html)), expect.lyrics);
     });
   });
 }
