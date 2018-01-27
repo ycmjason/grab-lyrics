@@ -6,9 +6,6 @@ node_js:
   - "node"
   - "lts/*"
 
-before_install:
-  - sudo apt-get -qq update
-
 script:
   - npm test
 
