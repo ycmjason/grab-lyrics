@@ -1,21 +1,13 @@
 const assert = require('assert');
 const cheerio = require('cheerio');
-const fetch_retry = require('../helpers/fetch_retry');
+const testPages = require('./specs/testPages.json');
 
-const test_cases = {
-  'azlyricsService': require('./specs/azlyricsService.spec'),
-  'metrolyricsService': require('./specs/metrolyricsService.spec'),
-  'mojimService': require('./specs/mojimService.spec'),
-};
+const specs = require('./specs');
 
 const makeTest = (serviceName, { url, expect }) => {
   describe(`${serviceName} - ${expect.title}`, function() {
-    before(function(done) {
-      fetch_retry(url)
-        .then(res => res.text())
-        .then(html => this.html = html)
-        .then(() => done())
-        .catch(done);
+    before(function() {
+      this.html = testPages[url];
       this.lyricsService = require('../../lib/services/' + serviceName);
     });
 
@@ -37,7 +29,7 @@ const makeTest = (serviceName, { url, expect }) => {
 }
 
 describe('lyricsServices', () => {
-  for (let [serviceName, specs] of Object.entries(test_cases)) {
-    specs.forEach(spec => makeTest(serviceName, spec));
+  for (let [serviceName, testCases] of Object.entries(specs)) {
+    testCases.forEach(testCase => makeTest(serviceName, testCase));
   };
 });

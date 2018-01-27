@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "createTestPages": "node ./bin/createTestPages.js",
     "test": "nyc mocha --recursive",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
@@ -16,6 +17,7 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
+    "lodash.zipobject": "^4.1.3",
     "mocha": "^5.0.0",
     "nyc": "^11.4.1",
     "proxyquire": "^1.8.0",
