@@ -29,12 +29,12 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "codecov": "^3.0.0",
     "html-to-text": "^3.3.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "@ycm.jason/eslint-config": "file:../@ycm.jason/eslint-config",
+    "codecov": "^3.0.0",
     "eslint": "^4.16.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
