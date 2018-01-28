@@ -6,7 +6,9 @@
   "scripts": {
     "createTestPages": "node ./bin/createTestPages.js",
     "test": "nyc mocha --recursive",
-    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
+    "test:watch": "mocha --recursive --watch",
+    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "lint:js": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
+    "eslint": "^4.16.0",
     "lodash.zipobject": "^4.1.3",
     "mocha": "^5.0.0",
     "nyc": "^11.4.1",

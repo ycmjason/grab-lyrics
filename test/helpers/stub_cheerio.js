@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 module.exports = () => {
   const cheerioStub = function() {
-    throw "Please use `cheerio.load` instead.";
+    throw new Error('Please use `cheerio.load` instead.');
   };
 
   return Object.assign(cheerioStub, sinon.stub(Object.assign({}, cheerio)));

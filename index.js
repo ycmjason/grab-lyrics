@@ -1,7 +1,5 @@
-const fetch = require('node-fetch').default;
-const cheerio = require('cheerio');
+const azlyricsService = require('./lib/services/azlyricsService');
 
-const azlyricsService = require('./services/azlyricsService');
-
-azlyricsService.fetch('https://www.azlyrics.com/lyrics/johnmayer/backtoyou.html')
-  .then(console.log.bind(console));
+azlyricsService.fetch('https://www.azlyrics.com/lyrics/johnmayer/backtoyou.html').then(({ lyrics }) => {
+  console.log(lyrics);
+});

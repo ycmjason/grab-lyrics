@@ -12,7 +12,7 @@ const TEST_PAGES_DIST = path.join(__dirname, '../test/services/specs/testPages.j
 
 const serviceSpecMap = require('../test/services/specs');
 
-const urls = [].concat(...Object.entries(serviceSpecMap).map(([serviceName, testCases]) => testCases.map(({ url }) => url)));
+const urls = [].concat(...Object.entries(serviceSpecMap).map(([, testCases]) => testCases.map(({ url }) => url)));
 
 Promise.all(urls.map(fetchText)).then(contents => {
   fs.writeFileSync(TEST_PAGES_DIST, JSON.stringify(zipObject(urls, contents)), { flag: 'w' });

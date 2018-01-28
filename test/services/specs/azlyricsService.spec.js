@@ -1,10 +1,10 @@
 module.exports = [
-    {
-      url: 'https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html',
-      expect: {
-        title: 'Stop This Train',
-        artist: 'John Mayer',
-        lyrics: `No, I'm not color blind
+  {
+    url: 'https://www.azlyrics.com/lyrics/johnmayer/stopthistrain.html',
+    expect: {
+      title: 'Stop This Train',
+      artist: 'John Mayer',
+      lyrics: `No, I'm not color blind
 I know the world is black and white
 Try to keep an open mind
 but I just can't sleep on this tonight
@@ -53,6 +53,6 @@ I know I can't
 'Cause now I see I'll never stop this train."
 
 (think I got 'em now)`,
-      },
     },
-  ]
+  },
+];

@@ -1,3 +1,5 @@
+/* eslint-env node, mocha */
+
 const assert = require('assert');
 
 const sinon = require('sinon');
@@ -12,7 +14,10 @@ const ABSTRACT_METHODS = [
   'parseTitle',
   'parseArtist',
   'parseLyrics',
-  'canParse',
+];
+
+const ABSTRACT_GETTERS = [
+  'canParseHostnames',
 ];
 
 describe('AbstractLyricsService', function() {
@@ -70,6 +75,15 @@ describe('AbstractLyricsService', function() {
       it('# should throw', function() {
         const { AbstractLyricsService } = this;
         assert.throws(() => new AbstractLyricsService()[methodName](), /overwritten/);
+      });
+    });
+  });
+
+  ABSTRACT_GETTERS.forEach(getterName => {
+    describe(`get ${getterName}()`, function() {
+      it('# should throw', function() {
+        const { AbstractLyricsService } = this;
+        assert.throws(() => new AbstractLyricsService()[getterName], /overwritten/);
       });
     });
   });
