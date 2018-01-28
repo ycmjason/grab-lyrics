@@ -24,6 +24,22 @@
       "error",
       "always"
     ],
-    "no-console": "off"
+    "no-console": "off",
+    "no-multi-spaces": [
+      "error",
+      {
+        "ignoreEOLComments": true,
+        "exceptions": { "Property": true }
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "block-spacing": "error",
+    "brace-style": "error",
+    "key-spacing": [
+      "error",
+      {
+        "align": "value"
+      }
+    ]
   }
 }
