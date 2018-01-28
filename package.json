@@ -1,6 +1,6 @@
 {
   "name": "grab-lyrics",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Fetch and grab lyrics easily.",
   "homepage": "https://github.com/ycmjason/grab-lyrics#readme",
   "repository": {
@@ -30,12 +30,12 @@
     "*.js": "npm run lint:js"
   },
   "dependencies": {
+    "@ycm.jason/eslint-config": "^1.0.0",
     "cheerio": "^1.0.0-rc.2",
     "html-to-text": "^3.3.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
-    "@ycm.jason/eslint-config": "file:../@ycm.jason/eslint-config",
     "codecov": "^3.0.0",
     "eslint": "^4.16.0",
     "husky": "^0.14.3",
