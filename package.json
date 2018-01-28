@@ -1,7 +1,15 @@
 {
   "name": "grab-lyrics",
   "version": "0.0.1",
-  "description": "",
+  "description": "Fetch and grab lyrics easily.",
+  "homepage": "https://github.com/ycmjason/grab-lyrics#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ycmjason/grab-lyrics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ycmjason/grab-lyrics/issues"
+  },
   "main": "index.js",
   "scripts": {
     "createTestPages": "node ./bin/createTestPages.js",
@@ -9,11 +17,10 @@
     "test:watch": "mocha --recursive --watch",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
+    "": "",
     "precommit": "npm run lint:js",
     "prepush": "npm test"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "codecov": "^3.0.0",
@@ -28,5 +35,7 @@
     "nyc": "^11.4.1",
     "proxyquire": "^1.8.0",
     "sinon": "^4.2.1"
-  }
+  },
+  "license": "ISC",
+  "author": "Jason Yu <me@ycmjason.com>"
 }
