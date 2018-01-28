@@ -9,7 +9,8 @@
     "test:watch": "mocha --recursive --watch",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
-    "precommit": "npm run lint:js"
+    "precommit": "npm run lint:js",
+    "prepush": "npm test"
   },
   "author": "",
   "license": "ISC",
