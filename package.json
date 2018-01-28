@@ -1,6 +1,6 @@
 {
   "name": "grab-lyrics",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Fetch and grab lyrics easily.",
   "homepage": "https://github.com/ycmjason/grab-lyrics#readme",
   "repository": {
@@ -12,28 +12,31 @@
   },
   "main": "index.js",
   "scripts": {
-    "createTestPages": "node ./scripts/createTestPages.js",
+    "preversion": "git checkout master && git merge --squash dev && npm test",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && git checkout -",
+    "prepublishOnly": "git checkout master",
+    "postpublish": "git checkout -",
+    "\n# TESTING SCRIPTS:": "",
     "test": "nyc mocha --recursive",
     "test:watch": "mocha --recursive --watch",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
-    "": "",
-    "precommit": "lint-staged",
-    "preversion": "git checkout master && git merge --squash dev && npm test",
-    "version": "git add -A",
-    "postversion": "git push && git push --tags && git checkout dev"
+    "createTestPages": "node ./scripts/createTestPages.js",
+    "\n# HUSKY GIT HOOKS:": "",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": "npm run lint:js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "codecov": "^3.0.0",
     "html-to-text": "^3.3.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "@ycm.jason/eslint-config": "file:../@ycm.jason/eslint-config",
+    "codecov": "^3.0.0",
     "eslint": "^4.16.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
