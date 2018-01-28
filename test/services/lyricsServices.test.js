@@ -4,9 +4,12 @@ const testPages = require('./specs/testPages.json');
 
 const specs = require('./specs');
 
+const TEST_PAGE_MISSING_ERROR = new Error('Test page missing: Please do `npm run createTestPages`');
+
 const makeTest = (serviceName, { url, expect }) => {
   describe(`${serviceName} - ${expect.title}`, function() {
     before(function() {
+      if(!(url in testPages)) throw TEST_PAGE_MISSING_ERROR;
       this.html = testPages[url];
       this.lyricsService = require('../../lib/services/' + serviceName);
     });
