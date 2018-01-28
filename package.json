@@ -12,17 +12,17 @@
   },
   "main": "index.js",
   "scripts": {
-    "createTestPages": "node ./scripts/createTestPages.js",
+    "preversion": "git checkout master && git merge --squash dev && npm test",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && git checkout -",
+    "\n# TESTING SCRIPTS:": "",
     "test": "nyc mocha --recursive",
     "test:watch": "mocha --recursive --watch",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
-    "": "",
-    "precommit": "lint-staged",
-    "": "",
-    "preversion": "git checkout master && git merge --squash dev && npm test",
-    "version": "git add -A",
-    "postversion": "git push && git push --tags && git checkout dev"
+    "createTestPages": "node ./scripts/createTestPages.js",
+    "\n# HUSKY GIT HOOKS:": "",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": "npm run lint:js"
