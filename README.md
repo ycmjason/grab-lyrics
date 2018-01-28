@@ -15,8 +15,16 @@ This package tries to provide an easy interface to fetch the artist, title, and 
 The motivation behind this package mainly is for another project of mine [Split Lyrics](https://split-lyrics.ycmjason.com/) which split the lyrics into half and display them on the screen so that we won't need to scroll while singing/player guitar.
 
 ## Library
+This package exposes `grabLyrics(url)` function which return a `Promise` that resolves to an Object `{ title, artist, lyrics }`.
 
 ### Install
+```
+npm i --save grab-lyrics
+```
+
+### Usage
+```javascript
+const grabLyrics
 
 ## CLI
 
