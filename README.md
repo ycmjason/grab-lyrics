@@ -14,8 +14,12 @@ This package tries to provide an easy interface to fetch the artist, title, and 
 
 The motivation behind this package mainly is for another project of mine [Split Lyrics](https://split-lyrics.ycmjason.com/) which split the lyrics into half and display them on the screen so that we won't need to scroll while singing/player guitar.
 
-## Usage
-WIP
+## Library
+
+### Install
+
+## CLI
+
 
 ## Author
 Jaosn Yu

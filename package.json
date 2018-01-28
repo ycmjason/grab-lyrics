@@ -12,7 +12,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "createTestPages": "node ./bin/createTestPages.js",
+    "createTestPages": "node ./scripts/createTestPages.js",
     "test": "nyc mocha --recursive",
     "test:watch": "mocha --recursive --watch",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
@@ -40,5 +40,8 @@
     "sinon": "^4.2.1"
   },
   "license": "ISC",
-  "author": "Jason Yu <me@ycmjason.com>"
+  "author": "Jason Yu <me@ycmjason.com>",
+  "bin": {
+    "grab-lyrics": "grab-lyrics.js"
+  }
 }
