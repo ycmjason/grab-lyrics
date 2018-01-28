@@ -35,11 +35,6 @@
     "no-trailing-spaces": "error",
     "block-spacing": "error",
     "brace-style": "error",
-    "key-spacing": [
-      "error",
-      {
-        "align": "value"
-      }
-    ]
+    "keyword-spacing": "error"
   }
 }

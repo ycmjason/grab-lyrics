@@ -13,7 +13,7 @@ const AbstractLyricsService = require('../../lib/services/AbstractLyricsService'
 const makeTest = (serviceName, { url, expect }) => {
   describe(`${serviceName} - ${expect.title}`, function() {
     before(function() {
-      if(!(url in testPages)) throw TEST_PAGE_MISSING_ERROR;
+      if (!(url in testPages)) throw TEST_PAGE_MISSING_ERROR;
       this.html = testPages[url];
       this.lyricsService = require('../../lib/services/' + serviceName);
     });

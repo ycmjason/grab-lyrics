@@ -4,7 +4,7 @@ const CANNOT_PARSE_ERROR = new Error('Cannot Parse: this url is not supported ye
 
 module.exports = (url) => {
   const service = services.find(s => s.canParse(url));
-  if(!service) return Promise.reject(CANNOT_PARSE_ERROR);
+  if (!service) return Promise.reject(CANNOT_PARSE_ERROR);
 
   return service.fetch(url);
 };
