@@ -1,6 +1,6 @@
 {
   "name": "grab-lyrics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch and grab lyrics easily.",
   "homepage": "https://github.com/ycmjason/grab-lyrics#readme",
   "repository": {
@@ -18,7 +18,10 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
     "": "",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "preversion": "git checkout master && git merge --squash dev && npm test",
+    "version": "git add -A",
+    "postversion": "git checkout dev"
   },
   "lint-staged": {
     "*.js": "npm run lint:js"
@@ -43,6 +46,6 @@
   "license": "ISC",
   "author": "Jason Yu <me@ycmjason.com>",
   "bin": {
-    "grab-lyrics": "grab-lyrics.js"
+    "grab-lyrics": "bin/grab-lyrics.js"
   }
 }
