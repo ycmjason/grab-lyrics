@@ -1,6 +1,6 @@
 {
   "name": "grab-lyrics",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Fetch and grab lyrics easily.",
   "homepage": "https://github.com/ycmjason/grab-lyrics#readme",
   "repository": {
@@ -14,9 +14,9 @@
   "scripts": {
     "preversion": "git checkout master && git merge --squash dev && npm test",
     "version": "git add -A",
-    "postversion": "git push && git push --tags && git checkout -",
+    "postversion": "git checkout - && git merge master -m 'Merge with master'",
     "prepublishOnly": "git checkout master",
-    "postpublish": "git checkout -",
+    "postpublish": "git push && git push --tags && git checkout -",
     "\n# TESTING SCRIPTS:": "",
     "test": "nyc mocha --recursive",
     "test:watch": "mocha --recursive --watch",
