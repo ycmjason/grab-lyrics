@@ -18,7 +18,11 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "lint:js": "eslint .",
     "": "",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "": "",
+    "preversion": "git checkout master && git merge --squash dev && npm test",
+    "version": "git add -A",
+    "postversion": "git checkout dev"
   },
   "lint-staged": {
     "*.js": "npm run lint:js"
