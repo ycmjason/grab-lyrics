@@ -35,6 +35,21 @@
     "no-trailing-spaces": "error",
     "block-spacing": "error",
     "brace-style": "error",
-    "keyword-spacing": "error"
+    "keyword-spacing": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "lines-between-class-members": [
+      "error",
+      "always"
+    ],
+    "comma-dangle": [
+      "warn", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "never"
+      }
+    ]
   }
 }
