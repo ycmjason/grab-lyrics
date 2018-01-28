@@ -22,7 +22,7 @@
     "": "",
     "preversion": "git checkout master && git merge --squash dev && npm test",
     "version": "git add -A",
-    "postversion": "git checkout dev"
+    "postversion": "git push && git push --tags && git checkout dev"
   },
   "lint-staged": {
     "*.js": "npm run lint:js"
