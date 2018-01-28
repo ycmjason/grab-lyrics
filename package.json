@@ -43,6 +43,6 @@
   "license": "ISC",
   "author": "Jason Yu <me@ycmjason.com>",
   "bin": {
-    "grab-lyrics": "grab-lyrics.js"
+    "grab-lyrics": "bin/grab-lyrics.js"
   }
 }
